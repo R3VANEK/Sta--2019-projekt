@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -18,7 +18,7 @@ namespace RoomManagement1.Controllers
 
         public IActionResult All()
         {
-            string path = @"C:\Users\j.napieralski\source\repos\RoomManagement1\RoomManagement1\classes.json";
+            string path = @"..\SohbiRoomManager\classes.json";
             var jsoncontent = System.IO.File.ReadAllText(path);
             var rooms = JsonConvert.DeserializeObject<Rooms>(jsoncontent);
             ViewData["Title"] = "Zobacz";
