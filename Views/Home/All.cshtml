@@ -1,0 +1,51 @@
+﻿
+@model RoomManagement1.Models.Rooms;
+
+<!Doctype html>
+<html>
+<head>
+    <title>bla</title>
+    <link rel="stylesheet" href="~/css/Mystyles.css" />
+    <style>
+        .doors_wrapper{
+            margin-top:7%;
+            margin-left:5%;
+            width:25%;
+            height:400px;
+             float:left;
+        }
+        body{
+            background-color:black;
+        }
+        h2{
+            margin-left:5%;
+            color:white;  
+        }
+        .img_option{
+            width:100%;
+            height:200px;
+        }
+    </style>
+</head>
+
+<body>
+    @foreach (var item in Model.rooms)
+    {
+        <div class="doors_wrapper">
+            <img src="~/img/door.png" class="img_option" />
+            <h2>Numer Sali : @item.Numer</h2>
+            <p><h2 style="margin-top:2%;">Opis: @item.Opis</h2> </p>
+            @if(item.Zajęte == false)
+            {
+                <h2 style="color:white; margin-top:1%;">Sala: <span style="color:green;">Niezarezerwowana</span></h2>
+            }
+            else
+            {
+                <h2 style="color:white;">Sala: <span style="color:red;">Zarezerwowana</span></h2>
+            }
+        </div>
+    }
+
+
+</body>
+</html>

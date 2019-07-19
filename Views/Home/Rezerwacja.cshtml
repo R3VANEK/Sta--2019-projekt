@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Rezerwacja";
+}
+@model  RoomManagement1.Models.RoomData;
+
+<!Doctype html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/Mystyles.css" />
+</head>
+
+<body>
+    <div id="Welcome">
+        <h1 style="font-size:30px;margin-left:0%;">Wypełnij formularz i zarezerwuj salę</h1>
+       
+    </div>
+
+    <form asp-controller="Home" asp-action="All" method="post">
+        <label asp-for="Numer">
+            Name<input asp-for="Numer" style="margin-top:10%;" />
+            <span asp-validation-for="Numer" style="color:red;">Podany numer nie istnieje</span>
+        </label>
+
+        <label asp-for="Godzina">
+            Godzina<input asp-for="Godzina" style="margin-top:10%;" />
+            <span asp-validation-for="Godzina" style="color:red">Podano niewłaściwie godzinę</span>
+        </label>
+
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>

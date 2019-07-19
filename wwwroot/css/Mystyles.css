@@ -1,0 +1,16 @@
+﻿#Welcome{
+    margin-top:10%;
+    margin-left:30%;
+    width:40%;
+}
+#options{
+    margin-top:5%;
+    width:100%;
+    height:100px;
+}
+#options a{
+    float:left;
+    text-decoration:none;
+    font-size:25px;
+    margin-left:10%;
+}
