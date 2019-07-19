@@ -1,1 +1,18 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+{
+  "rooms": [
+    {
+      "Id": 0,
+      "Numer": 123,
+      "Opis": "sala konferencyjna",
+      "Zajête": false,
+      "Godzina": "00:00:00"
+    },
+    {
+      "Id": 1,
+      "Numer": 124,
+      "Opis": "sala do szkolen BHP",
+      "Zajete": false,
+      "Godzina": "00:00:00"
+    }
+  ]
+}
