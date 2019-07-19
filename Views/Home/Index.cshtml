@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -16,9 +16,9 @@
         </div>
 
         <div id="options">
-            <a href="Home/All">Zobacz wszystkie sale</a>
-            <a href="Home/Choose" style="margin-left:12%;">Zarządzaj salami</a>
-            <a href="Home/Rezerwacja" style="margin-left:17%;">Zarezerwuj sale</a>
+            <a href="@Url.Action("All", "Home")">Zobacz wszystkie sale</a>
+            <a href="@Url.Action("Choose", "Home")" style="margin-left:12%;">Zarządzaj salami</a>
+            <a href="@Url.Action("Rezerwacja","Home")" style="margin-left:17%;">Zarezerwuj sale</a>
         </div>
     </body>
 </html>
