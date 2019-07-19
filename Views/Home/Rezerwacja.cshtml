@@ -1,33 +1,85 @@
-﻿@{
+@{
     ViewData["Title"] = "Rezerwacja";
+    RoomData room = ViewData["room"] as RoomManagement1.Models.RoomData;
 }
-@model  RoomManagement1.Models.RoomData;
+@model RoomManagement1.Models.Rooms;
+@using Newtonsoft.Json;
+
+@{
+    void Helper()
+    {
+        foreach(var y in Model.rooms)
+        {
+            if(y.Numer == room.Numer)
+            {
+                y.Godzina = room.Godzina;
+                y.Zajete = true;
+            }
+        }
+        foreach(var z in Model.rooms)
+        {
+            //JsonConvert.SerializeObject(z);
+            string path = @"..\SohbiRoomManager\classes.json";
+            var rooms = JsonConvert.DeserializeObject<Rooms>(jsoncontent);
+            System.IO.File.WriteAllText(path,;
+            
+            
+        }
+        
+    }
+} 
+
 
 <!Doctype html>
 <html>
 <head>
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/Mystyles.css" />
+    <style>
+        label {
+            margin-top: 2%;
+        }
+    </style>
 </head>
 
 <body>
     <div id="Welcome">
         <h1 style="font-size:30px;margin-left:0%;">Wypełnij formularz i zarezerwuj salę</h1>
-       
+
     </div>
 
     <form asp-controller="Home" asp-action="All" method="post">
-        <label asp-for="Numer">
-            Name<input asp-for="Numer" style="margin-top:10%;" />
-            <span asp-validation-for="Numer" style="color:red;">Podany numer nie istnieje</span>
+        <label>
+            Numer: <select style="margin-top:5%;" asp-for="@room.Numer">
+    @foreach (var x in Model.rooms)
+    {
+        if (x.Zajete != true)
+        {
+            <option value="@x.Numer">@x.Numer</option>
+        }
+    }
+</select><br />
         </label>
 
-        <label asp-for="Godzina">
-            Godzina<input asp-for="Godzina" style="margin-top:10%;" />
-            <span asp-validation-for="Godzina" style="color:red">Podano niewłaściwie godzinę</span>
+        <label>
+            Godzina (prosimy podawać godzinę w formacie GG:MM:SS): <input style="margin-top:2%;" asp-for="@room.Godzina"/><br />
         </label>
 
-        <button type="submit">Create</button>
-    </form>
+        <button type="submit" style="margin-top:5%;" onclick="@foreach(var y in Model.rooms)
+        {
+            if(y.Numer == room.Numer)
+            {
+                y.Godzina = room.Godzina;
+                y.Zajete = true;
+            }
+        }
+                ">Rezerwuj</button>
+
+        
+
+</form>
+
+
+
 </body>
 </html>
