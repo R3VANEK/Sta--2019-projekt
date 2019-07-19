@@ -1,6 +1,10 @@
 ﻿
 @model RoomManagement1.Models.Rooms;
 
+@{ 
+    Layout = "_Layout";
+}
+
 <!Doctype html>
 <html>
 <head>
@@ -12,10 +16,11 @@
             margin-left:5%;
             width:25%;
             height:400px;
-             float:left;
+            float:left;
         }
         body{
             background-color:black;
+            text-align: center;
         }
         h2{
             margin-left:5%;
@@ -25,27 +30,37 @@
             width:100%;
             height:200px;
         }
+
+        #rooms{
+            margin-left: auto;
+            margin-right: auto;
+        }
+
     </style>
 </head>
 
 <body>
+    <div id="rooms">
     @foreach (var item in Model.rooms)
     {
-        <div class="doors_wrapper">
-            <img src="~/img/door.png" class="img_option" />
-            <h2>Numer Sali : @item.Numer</h2>
-            <p><h2 style="margin-top:2%;">Opis: @item.Opis</h2> </p>
-            @if(item.Zajęte == false)
+    <div class="card" style="width: 18rem; float: left;">
+        <img class="card-img-top" src="~/img/door.png" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@item.Numer</h5>
+            <p class="card-text">@item.Opis</p>
+            @if (item.Zajete == false)
             {
-                <h2 style="color:white; margin-top:1%;">Sala: <span style="color:green;">Niezarezerwowana</span></h2>
+                <p class="card-text" style="color:green;">Niezarezerwowana</p>
+                <a href="#" class="btn btn-primary">Zarezerwuj</a>
             }
-            else
+            @if (item.Zajete == true)
             {
-                <h2 style="color:white;">Sala: <span style="color:red;">Zarezerwowana</span></h2>
+                <p class="card-text" style="color:red;">Zarezerwowana</p>
             }
         </div>
+    </div>
     }
-
+    </div>
 
 </body>
 </html>

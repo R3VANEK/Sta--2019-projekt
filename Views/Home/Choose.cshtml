@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Wybierz";
+    Layout = "_Layout";
 }
 
 <!Doctype html>
@@ -16,7 +17,7 @@
 
     <div id="options">
         <a href="#">Usuń istniejącą sale</a>
-        <a href="#" style="margin-left:35%;">Dodaj nową salę</a>
+        <a href="@Url.Action("AddRoom", "Manage")" style="margin-left:35%;">Dodaj nową salę</a>
     </div>
 </body>
 </html>
