@@ -16,6 +16,6 @@ namespace RoomManagement1.Models
         [DataType(DataType.Text)]
         public string Opis { get; set; }
         public bool Zajete { get; set; }
-        public string Godzina { get; set; }
+        public DateTime Godzina { get; set; }
     }
 }

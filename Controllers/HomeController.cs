@@ -28,13 +28,9 @@ namespace RoomManagement1.Controllers
         {
             return View();
         }
-        public IActionResult Rezerwacja()
+        public IActionResult Rezerwacja(RoomData room)
         {
-            string path = @"..\SohbiRoomManager\classes.json";
-            var jsoncontent = System.IO.File.ReadAllText(path);
-            var rooms = JsonConvert.DeserializeObject<Rooms>(jsoncontent);
-            ViewData["room"] = new RoomData();
-            return View(rooms);
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

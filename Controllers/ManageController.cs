@@ -31,7 +31,7 @@ namespace SohbiRoomManager.Controllers
                 Zajete = false,
                 Numer = roomData.Numer,
                 Opis = $"{roomData.Opis}",
-                Godzina = $"00:00:00",
+                Godzina = Convert.ToDateTime("01-01-2019 00:00:00"),
             };
 
             OpenAndWriteToTasks(newRoom);
