@@ -1,30 +1,48 @@
-﻿@{
+@{
     ViewData["Title"] = "Rezerwacja";
-    Layout = "_Layout";
+    RoomData room = ViewData["room"] as RoomManagement1.Models.RoomData;
 }
-@model RoomManagement1.Models.RoomData;
+@model RoomManagement1.Models.Rooms;
+@{
+    Rooms Helper()
+    {
+        var helper = Model;
+        return helper;
+    }
+} 
 
-<h1>Dodaj nową sale</h1>
+
+
+<h1>Rezerwuj sale</h1>
 
 <hr />
 <div class="row" style="text-align:center;">
     <div class="col-md-4">
-        <form asp-action="AddRoom">
+        <form asp-controller="Home" asp-action="Rezerwacja" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
-                <label asp-for="Numer" class="control-label"></label>
-                <input asp-for="Numer" class="form-control" />
-                <span asp-validation-for="Numer" class="text-danger"></span>
+                <label asp-for="@room.Numer" class="control-label">
+                    Numer: <select style="margin-top:5%;" asp-for="@room.Numer">
+                        @foreach (var x in Model.rooms)
+                        {
+                            if (x.Zajete != true)
+                            {
+                                <option value="@x.Numer">@x.Numer</option>
+                            }
+                        }
+                    </select><br />
+                </label>
+                   <span asp-validation-for="@room.Numer" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Godzina" class="control-label"></label>
-                <input asp-for="Godzina" class="form-control" />
-                <span asp-validation-for="Godzina" class="text-danger"></span>
+                <label asp-for="@room.Godzina" class="control-label"></label>
+                <input asp-for="@room.Godzina" class="form-control" />
+                <span asp-validation-for="@room.Godzina" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" onclick="@Helper()"/>
             </div>
         </form>
     </div>
