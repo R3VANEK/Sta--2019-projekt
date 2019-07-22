@@ -28,9 +28,38 @@ namespace RoomManagement1.Controllers
         {
             return View();
         }
-        public IActionResult Rezerwacja(RoomData room)
+        public IActionResult Rezerwacja()
         {
-            return View();
+            string path = @"..\SohbiRoomManager\classes.json";
+            var jsoncontent = System.IO.File.ReadAllText(path);
+            var rooms = JsonConvert.DeserializeObject<Rooms>(jsoncontent);
+            ViewData["room"] = new RoomData();
+            return View(rooms);
+        }
+        [HttpPost]
+        public IActionResult Rezerwacja(Rooms helper)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(helper);
+            }
+            else
+            {
+                RoomData testrooms = new RoomData();
+                foreach (var y in helper.rooms)
+                {
+                    if (y.Numer == testrooms.Numer)
+                    {
+                        y.Godzina = testrooms.Godzina;
+                        y.Zajete = true;
+                        string path = @"..\SohbiRoomManager\classes.json";
+                        var ser = JsonConvert.SerializeObject(y);
+                        System.IO.File.WriteAllText(path, ser);
+                    }
+                }
+                return Redirect("Home/All");
+            }
+           
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
