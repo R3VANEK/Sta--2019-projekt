@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -33,27 +33,30 @@ namespace RoomManagement1.Controllers
             string path = @"..\SohbiRoomManager\classes.json";
             var jsoncontent = System.IO.File.ReadAllText(path);
             var rooms = JsonConvert.DeserializeObject<Rooms>(jsoncontent);
-            ViewData["room"] = new RoomData();
-            return View(rooms);
+            ViewData["rooms"] = rooms;
+            var model = new RoomData();
+            return View(model);
         }
         [HttpPost]
-        public IActionResult Rezerwacja(Rooms helper)
+        public IActionResult Rezerwacja(RoomData helper)
         {
+            string path = @"..\SohbiRoomManager\classes.json";
+            var jsoncontent = System.IO.File.ReadAllText(path);
+            var rooms = JsonConvert.DeserializeObject<Rooms>(jsoncontent);
+
             if (!ModelState.IsValid)
             {
                 return View(helper);
             }
             else
             {
-                RoomData testrooms = new RoomData();
-                foreach (var y in helper.rooms)
+                foreach (var y in rooms.rooms)
                 {
-                    if (y.Numer == testrooms.Numer)
+                    if (y.Numer == helper.Numer)
                     {
-                        y.Godzina = testrooms.Godzina;
+                        y.Godzina = helper.Godzina;
                         y.Zajete = true;
-                        string path = @"..\SohbiRoomManager\classes.json";
-                        var ser = JsonConvert.SerializeObject(y);
+                        var ser = JsonConvert.SerializeObject(rooms, Formatting.Indented);
                         System.IO.File.WriteAllText(path, ser);
                     }
                 }
@@ -69,3 +72,4 @@ namespace RoomManagement1.Controllers
         }
     }
 }
+
