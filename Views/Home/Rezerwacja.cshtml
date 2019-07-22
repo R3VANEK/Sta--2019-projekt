@@ -1,15 +1,8 @@
 @{
     ViewData["Title"] = "Rezerwacja";
-    RoomData room = ViewData["room"] as RoomManagement1.Models.RoomData;
+    Rooms rooms = ViewData["rooms"] as RoomManagement1.Models.Rooms;
 }
-@model RoomManagement1.Models.Rooms;
-@{
-    Rooms Helper()
-    {
-        var helper = Model;
-        return helper;
-    }
-} 
+@model RoomManagement1.Models.RoomData;
 
 
 
@@ -22,9 +15,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
-                <label asp-for="@room.Numer" class="control-label">
-                    Numer: <select style="margin-top:5%;" asp-for="@room.Numer">
-                        @foreach (var x in Model.rooms)
+                <label asp-for="@Model.Numer" class="control-label">
+                    Numer: <select style="margin-top:5%;" asp-for="@Model.Numer">
+                        @foreach (var x in rooms.rooms)
                         {
                             if (x.Zajete != true)
                             {
@@ -33,17 +26,18 @@
                         }
                     </select><br />
                 </label>
-                   <span asp-validation-for="@room.Numer" class="text-danger"></span>
+                   <span asp-validation-for="@Model.Numer" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@room.Godzina" class="control-label"></label>
-                <input asp-for="@room.Godzina" class="form-control" />
-                <span asp-validation-for="@room.Godzina" class="text-danger"></span>
+                <label asp-for="@Model.Godzina" class="control-label"></label>
+                <input asp-for="@Model.Godzina" class="form-control" />
+                <span asp-validation-for="@Model.Godzina" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" onclick="@Helper()"/>
+                <input type="submit" value="Create" class="btn btn-primary"/>
             </div>
         </form>
     </div>
 </div> 
+
