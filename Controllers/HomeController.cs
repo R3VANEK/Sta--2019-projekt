@@ -13,7 +13,26 @@ namespace RoomManagement1.Controllers
     {
         public IActionResult Index()
         {
+            CheckDates();
             return View();
+        }
+
+        public void CheckDates()
+        {
+            string path = @"..\SohbiRoomManager\classes.json";
+            var jsoncontent = System.IO.File.ReadAllText(path);
+            var rooms = JsonConvert.DeserializeObject<Rooms>(jsoncontent);
+
+            foreach(var room in rooms.rooms)
+            {
+                if(room.Godzina.Date <= DateTime.Now)
+                {
+                    int idx = rooms.rooms.IndexOf(room);
+                    rooms.rooms[idx].Zajete = false;
+                    var _jsonoutput = JsonConvert.SerializeObject(rooms, Formatting.Indented);
+                    System.IO.File.WriteAllText(path, _jsonoutput);
+                }
+            }
         }
 
         public IActionResult All()
