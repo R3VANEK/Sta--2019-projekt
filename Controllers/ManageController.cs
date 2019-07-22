@@ -39,6 +39,23 @@ namespace SohbiRoomManager.Controllers
             return RedirectToAction("AddRoom");
         }
 
+        public IActionResult Delete(int numer)
+        {
+            string path = @"..\SohbiRoomManager\classes.json";
+            var jsoncontent = System.IO.File.ReadAllText(path);
+            var rooms = JsonConvert.DeserializeObject<Rooms>(jsoncontent);
+            for (int i = 0; i < rooms.rooms.Count; i += 1)
+            {
+                if (rooms.rooms[i].Numer == numer)
+                {
+                    rooms.rooms.Remove(rooms.rooms[i]);
+                }
+            }
+            var ser = JsonConvert.SerializeObject(rooms, Formatting.Indented);
+            System.IO.File.WriteAllText(path, ser);
+            return Redirect("~/Home/All");
+        }
+
         public void OpenAndWriteToTasks(RoomData _newRoom)
         {
             string path = @"..\SohbiRoomManager\classes.json";
