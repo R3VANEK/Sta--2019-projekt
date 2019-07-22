@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,7 +12,6 @@ namespace RoomManagement1.Models
         [Range(0, int.MaxValue, ErrorMessage = "This value must be a number")]
         public int Numer { get; set; }
 
-        [Required(ErrorMessage = "Opis jest wymagany")]
         [DataType(DataType.Text)]
         public string Opis { get; set; }
         public bool Zajete { get; set; }
