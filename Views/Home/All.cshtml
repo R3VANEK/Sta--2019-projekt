@@ -1,4 +1,4 @@
-﻿
+
 @model RoomManagement1.Models.Rooms;
 
 @{ 
@@ -56,6 +56,7 @@
             @if (item.Zajete == true)
             {
                 <p class="card-text" style="color:red;">Zarezerwowana</p>
+                <p class="card-text" style="color:red">@item.Godzina</p>
             }
         </div>
     </div>
