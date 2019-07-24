@@ -1,18 +1,16 @@
 {
   "rooms": [
     {
-      "Id": 0,
       "Numer": 123,
       "Opis": "sala konferencyjna",
       "Zajete": false,
-      "Godzina": "00:00:00"
+      "Godzina": "2019-07-24T00:00:00"
     },
     {
-      "Id": 1,
       "Numer": 124,
       "Opis": "sala do szkolen BHP",
       "Zajete": false,
-      "Godzina": "00:00:00"
+      "Godzina": "2019-07-24T00:00:00"
     }
   ]
 }
