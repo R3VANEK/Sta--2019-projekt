@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "_MyLayout";
+}
+@model SohbiRoomManager.Models.UserData  
+<!Doctype html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/Mystyles.css" />
+    <style>
+        #form-log{
+            margin-top:5%;
+        }
+        #title{
+            font-size:2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="title">Zaloguj się na istniejące konto</div>
+
+    <form id="form-log" asp-controller="Home" asp-action="Logowanie" method="post">
+        <label asp-for="@Model.Login">
+            Login: <input type="text" asp-for="@Model.Login"/>
+            <span asp-validation-for="@Model.Login" class="text-danger"></span>
+        </label>
+
+        <label style="margin-left:5%;" asp-for="@Model.Password">
+            Hasło: <input type="password" asp-for="@Model.Password"/>
+            <span asp-validation-for="@Model.Password" class="text-danger"></span>
+        </label>
+
+        <button type="submit">Zatwierdź</button>
+    </form>
+</body>
+</html>
