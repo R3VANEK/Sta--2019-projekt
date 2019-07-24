@@ -6,17 +6,49 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using RoomManagement1.Models;
 using Newtonsoft.Json;
+using SohbiRoomManager.Models;
 
 namespace RoomManagement1.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Main()
         {
+            ViewData["Login"] = UserData.Acceptedlogin;
             CheckDates();
             return View();
         }
+        
+        public IActionResult Index()
+        {
+            var model = new UserData();
+            ViewData["title"] = "logowanie";
+            return View(model);
+        }
 
+        [HttpPost]
+        public IActionResult Index(UserData toTest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(toTest);
+            }
+            else
+            {
+                string path = @"..\SohbiRoomManager\users.json";
+                var jsoncontent = System.IO.File.ReadAllText(path);
+                var users = JsonConvert.DeserializeObject<Users>(jsoncontent);
+                foreach(var x in users.users)
+                {
+                    if (toTest.Login == x.Login && toTest.Password == x.Password)
+                    {
+                        UserData.Acceptedlogin = toTest.Login;
+                        return Redirect("~/Home/Main");      
+                    }
+                }
+                return View(toTest);
+            }
+        }
         public void CheckDates()
         {
             string path = @"..\SohbiRoomManager\classes.json";
@@ -91,4 +123,3 @@ namespace RoomManagement1.Controllers
         }
     }
 }
-
