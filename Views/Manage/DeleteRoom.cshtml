@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "DeleteRoom";
+    int id = ViewBag.id;
+}
+@using Newtonsoft.Json
+<style>
+    #sure{
+        width:70%;
+        height:100px;
+        margin-top:2%;
+        margin-left:15%;
+    }
+    #text{
+        width:50%;
+        height:100px;
+        margin-top:5%;
+        margin-left:30%;
+        font-size:2em;
+    }
+    .Tak{
+        margin-left:0%;
+        height:100%;
+        width:30%;
+        background-color:green;
+        color:white;
+        font-size:3em;
+        text-align:center;
+        padding-top:2%;
+        float:left;
+    }
+    .Tak:hover{
+        cursor:pointer;
+    }
+    .Nie{
+        margin-left:40%;
+        height:100%;
+        width:30%;
+        background-color:red;
+        color:white;
+        font-size:3em;
+        text-align:center;
+        padding-top:2%;
+        float:left;
+        text-decoration:none;
+    }
+    .Nie:hover{
+        cursor:pointer;
+    }
+</style>
+@{ 
+    string path = @"..\SohbiRoomManager\classes.json";
+        var jsoncontent = System.IO.File.ReadAllText(path);
+        var rooms = JsonConvert.DeserializeObject<Rooms>(jsoncontent);
+        for(int i = 0; i<rooms.rooms.Count; i += 1)
+        {
+            if(rooms.rooms[i].Numer == id)
+            {
+                rooms.rooms.Remove(rooms.rooms[i]);
+            }
+        }
+        var ser = JsonConvert.SerializeObject(rooms, Formatting.Indented);
+        System.IO.File.WriteAllText(path, ser);
+}
+<div>Sale o numerze @id  usunięto pomyślnie</div>
+<div><a href="~/Home/Index">return</a></div>
