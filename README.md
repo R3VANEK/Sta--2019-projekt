@@ -9,8 +9,12 @@ Aplikacja ta miała sprawdzić naszą zdobytą wiedzę o ASP. Jako narzędzie do
 
 Oprócz tego projektu, zaprojektowaliśmy małą witrynę w Wordpressie, niestety była ona na serwerze firmy i po odbyciu naszego stażu została usunięta
 
+# Uruchamianie
 
-Autorzy : 
+Aby uruchomić naszą aplikację, należy wpierw pobrać Visual Studio 2019, następnie zainstalować za pomocą instalatora programu .NET Core oraz ASP.NET. Następnie należy utworzyć domyślny projekt aplikacji ASP.NET MVC i podmienić pliki z repozytorium z domyślnymi plikami projektu.
+
+
+# Autorzy
 
 - Jan Napieralski (REVANPL)
 - Kamil Paczkowski (ShamanDev) 
