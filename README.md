@@ -7,6 +7,8 @@ Jaki jest cel aplikacji? Proste zarządzanie rezerwacjami pokoi w firmie lub w h
 
 Aplikacja ta miała sprawdzić naszą zdobytą wiedzę o ASP. Jako narzędzie do przechowywania danych zastosowaliśmy zwykłe pliki JSON, ponieważ na podłączenie bazy danych zabrakło czasu, a do tego w tamtym okresie średnio znaliśmy polecenia SQL. Strona jest zbudowana w architekturze MVC
 
+Oprócz tego projektu, zaprojektowaliśmy małą witrynę w Wordpressie, niestety była ona na serwerze firmy i po odbyciu naszego stażu została usunięta
+
 
 Autorzy : 
 
