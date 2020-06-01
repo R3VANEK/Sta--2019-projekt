@@ -8,4 +8,9 @@ Jaki jest cel aplikacji? Proste zarządzanie rezerwacjami pokoi w firmie lub w h
 Aplikacja ta miała sprawdzić naszą zdobytą wiedzę o ASP. Jako narzędzie do przechowywania danych zastosowaliśmy zwykłe pliki JSON, ponieważ na podłączenie bazy danych zabrakło czasu, a do tego w tamtym okresie średnio znaliśmy polecenia SQL. Strona jest zbudowana w architekturze MVC
 
 
-Autorzy : Jan Napieralski (REVANPL) i Kamil Paczkowski ()2P
+Autorzy : 
+
+- Jan Napieralski(REVANPL)
+- Kamil Paczkowski(ShamanDev) 
+
+Klasa 2P
