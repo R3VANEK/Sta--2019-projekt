@@ -10,7 +10,7 @@ Aplikacja ta miała sprawdzić naszą zdobytą wiedzę o ASP. Jako narzędzie do
 
 Autorzy : 
 
-- Jan Napieralski(REVANPL)
-- Kamil Paczkowski(ShamanDev) 
+- Jan Napieralski (REVANPL)
+- Kamil Paczkowski (ShamanDev) 
 
 Klasa 2P
